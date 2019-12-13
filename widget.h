@@ -12,6 +12,7 @@ class Widget;
 class Widget : public QWidget
 {
 	Q_OBJECT
+    QString name;
 	QTcpSocket socket;
 	QTimer tick;
 	int number = 0;
@@ -27,9 +28,22 @@ private:
     void messageToSend(const char *);
 
 private slots:
+
 	void dataInSocket();
     void on_sendButton_clicked();
 
+    void on_lineEdit_returnPressed();
+    void on_pushButton_clicked();
+
+    void on_logoutButton_clicked();
+
+public slots:
+    void registrate(const QString &, const QString &);
+    void checkClient(const QString &, const QString &);
+
+signals:
+    void login_ok();
+    void login_no();
 };
 
 #endif // WIDGET_H
