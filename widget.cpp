@@ -10,7 +10,7 @@ Widget::Widget(QWidget *parent) :
 	connect( &socket, &QTcpSocket::readyRead,
              this, &Widget::dataInSocket );
 
-	socket.connectToHost( "192.168.2.44", 17888 );
+    socket.connectToHost( "192.168.2.44", 17888 );
     connected = true;
 }
 
@@ -31,6 +31,13 @@ void Widget::dataInSocket()
             ui->lbl_nickname->setText(name);
         } else if (tmp.contains("no")) {
             emit login_no();
+        }
+    } else if ( tmp.startsWith("$#$#$") && tmp.endsWith("$#$#$") ){
+        if (tmp.contains("no")) {
+            emit reg_no();
+        }
+        if (tmp.contains("ok")) {
+            emit reg_ok();
         }
     } else {
         ui->textEdit->append( tmp );

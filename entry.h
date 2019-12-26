@@ -15,6 +15,7 @@ class entry : public QDialog
 
     logIn * login;
     Widget * w;
+    bool recontruction =  false;
 
 public:
     explicit entry(QWidget *parent = nullptr);
@@ -31,7 +32,11 @@ public slots:
     void login_ok();
     void accept();
 private slots:
+    void returned();
+    void reg_no();
+    void reg_ok();
     void on_buttonLogIn_clicked();
+    void wrongLogin();
 };
 
 #endif // ENTRY_H

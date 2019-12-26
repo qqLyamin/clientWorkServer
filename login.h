@@ -24,9 +24,13 @@ public slots:
     void login_ok();
     void login_no();
 signals:
+    void return_to_entry();
     void login_ok_signal();
     void checkClient(const QString &, const QString &);
     void wrongLogin();
+
+private slots:
+    void on_buttonBox_rejected();
 };
 
 #endif // LOGIN_H

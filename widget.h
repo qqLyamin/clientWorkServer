@@ -12,14 +12,17 @@ class Widget;
 class Widget : public QWidget
 {
 	Q_OBJECT
-    QString name;
-	QTcpSocket socket;
+
+    QTcpSocket socket;
 	QTimer tick;
 	int number = 0;
 
     bool connected = false;
 
 public:
+
+    QString name;
+
 	explicit Widget(QWidget *parent = nullptr);
 	~Widget();
 
@@ -42,6 +45,8 @@ public slots:
     void checkClient(const QString &, const QString &);
 
 signals:
+    void reg_no();
+    void reg_ok();
     void login_ok();
     void login_no();
 };

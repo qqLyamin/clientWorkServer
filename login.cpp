@@ -28,8 +28,8 @@ void logIn::accept()
 
 void logIn::login_ok()
 {
-    this->close();
     emit login_ok_signal();
+    this->close();
 }
 
 void logIn::login_no()
@@ -38,4 +38,10 @@ void logIn::login_no()
     msg.setText("Wrong!");
     msg.exec();
     emit wrongLogin();
+}
+
+void logIn::on_buttonBox_rejected()
+{
+    emit return_to_entry();
+    this->close();
 }
