@@ -11,6 +11,16 @@ entry::entry(QWidget *parent) :
 {
     ui->setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
+    setFixedSize(this->width(), this->height());
+
+    setWindowFlags(Qt::CustomizeWindowHint      /*|
+                   Qt::WindowTitleHint          |
+                   Qt::WindowMinimizeButtonHint |
+                   Qt::WindowMaximizeButtonHint |
+                   Qt::WindowCloseButtonHint    |
+                   Qt::WindowSystemMenuHint     |
+                   Qt::WindowContextHelpButtonHint */);
+    this->setAttribute(Qt::WA_CustomWhatsThis);
     show();
 
     w = new Widget;

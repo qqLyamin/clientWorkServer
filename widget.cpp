@@ -7,10 +7,21 @@ Widget::Widget(QWidget *parent) :
 {
 	ui->setupUi(this);    
     setAttribute(Qt::WA_DeleteOnClose);
+    setFixedSize(this->width(), this->height());
+
+    setWindowFlags(Qt::CustomizeWindowHint      /*|
+                   Qt::WindowTitleHint          |
+                   Qt::WindowMinimizeButtonHint |
+                   Qt::WindowMaximizeButtonHint |
+                   Qt::WindowCloseButtonHint    |
+                   Qt::WindowSystemMenuHint     |
+                   Qt::WindowContextHelpButtonHint */);
+    this->setAttribute(Qt::WA_CustomWhatsThis);
+
 	connect( &socket, &QTcpSocket::readyRead,
              this, &Widget::dataInSocket );
 
-    socket.connectToHost( "192.168.2.44", 17888 );
+    socket.connectToHost( "192.168.1.115", 17888 );
     connected = true;
 }
 
